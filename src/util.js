@@ -1,3 +1,9 @@
+import { range, random } from 'lodash'
+
+export function randomPlaces (n) {
+  return range(n).map(i => random() > 0.5)
+}
+
 export function wrap (word) {
   return `<span class="word">${word}</span>`
 }

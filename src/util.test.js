@@ -1,7 +1,13 @@
 /* eslint-env jest */
-import { wrap, replace } from './util'
+import { randomPlaces, wrap, replace } from './util'
 
 describe('util', () => {
+  describe('random places', () => {
+    expect(randomPlaces(0).length).toBe(0)
+    expect(randomPlaces(5).length).toBe(5)
+    expect(randomPlaces(5).every(value => typeof value === 'boolean')).toBe(true)
+  })
+
   describe('wrap', () => {
     expect(wrap('text')).toBe('<span class="word">text</span>')
   })
