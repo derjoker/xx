@@ -10,7 +10,7 @@ export function wrap (word) {
 
 export function replace (text, places = [], reverse = false) {
   let index = 0
-  return text.replace(/\b\w+/g, (match) => {
+  return text.replace(/[a-zäöüß]+\b/gi, match => {
     // console.log('match', match)
     const ret = (reverse ? !places[index] : places[index]) ? wrap(match) : match
     ++index

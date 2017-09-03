@@ -28,15 +28,19 @@ describe('util', () => {
       expect(replace('foo bar', [true, true], true)).toBe(`foo bar`)
     })
 
-    // TODO: Deutsch
+    // TODO: HTML
+    it('html', () => {
+      expect(replace('<div class="test">html</div>')).toBe(`<div class="test">html</div>`)
+      // expect(replace('<div class="test">html</div>', [true])).toBe(`<div class="test">${wrap('html')}</div>`)
+    })
+
+    // TODO: Deutsch (ß)
     it('deutsch', () => {
-      expect(replace('über all')).toBe(`über all`)
-      // expect(replace('über all', [true, true])).toBe(`${wrap('über')} ${wrap('all')}`)
+      // expect(replace('ändern öffnen über bloß', [true, true, true, true])).toBe(`${wrap('ändern')} ${wrap('öffnen')} ${wrap('über')} ${wrap('bloß')}`)
     })
 
     // TODO: Chinese
     it('chinese', () => {
-      expect(replace('中文')).toBe(`中文`)
       // expect(replace('中文', [true, true])).toBe(`${wrap('中')}${wrap('文')}`)
     })
   })
