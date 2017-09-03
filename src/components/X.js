@@ -7,8 +7,7 @@ import { randomPlaces, replace } from '../util'
 import './X.css'
 
 const md = markdownIt({
-  html: true,
-  breaks: true
+  html: true
 })
 
 export default ({ content }) => {
@@ -20,17 +19,17 @@ export default ({ content }) => {
       <Row>
         <Col xs='12' sm='4'
           dangerouslySetInnerHTML={{
-            __html: md.renderInline(content)
+            __html: md.render(content)
           }}
         />
         <Col xs='12' sm='4'
           dangerouslySetInnerHTML={{
-            __html: md.renderInline(replace(content, places))
+            __html: md.render(replace(content, places))
           }}
         />
         <Col xs='12' sm='4'
           dangerouslySetInnerHTML={{
-            __html: md.renderInline(replace(content, places, true))
+            __html: md.render(replace(content, places, true))
           }}
         />
       </Row>
