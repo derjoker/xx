@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'reactstrap'
 
 import X from './X'
 
@@ -21,7 +22,7 @@ class Item extends Component {
     return (
       <div>
         <div>
-          <button onClick={this.onClick}>XX</button>
+          <Button color='primary' onClick={this.onClick}>XX</Button>
         </div>
         <div>
           <textarea ref={textarea => { this.textarea = textarea }} />

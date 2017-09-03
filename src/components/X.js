@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container, Row, Col } from 'reactstrap'
 
 import { randomPlaces, replace } from '../util'
 
@@ -9,22 +10,24 @@ export default ({ content }) => {
   const counts = matches ? matches.length : 0
   const places = randomPlaces(counts)
   return (
-    <div>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: content
-        }}
-      />
-      <div
-        dangerouslySetInnerHTML={{
-          __html: replace(content, places)
-        }}
-      />
-      <div
-        dangerouslySetInnerHTML={{
-          __html: replace(content, places, true)
-        }}
-      />
-    </div>
+    <Container>
+      <Row>
+        <Col xs='12' sm='4'
+          dangerouslySetInnerHTML={{
+            __html: content
+          }}
+        />
+        <Col xs='12' sm='4'
+          dangerouslySetInnerHTML={{
+            __html: replace(content, places)
+          }}
+        />
+        <Col xs='12' sm='4'
+          dangerouslySetInnerHTML={{
+            __html: replace(content, places, true)
+          }}
+        />
+      </Row>
+    </Container>
   )
 }
