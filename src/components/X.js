@@ -17,22 +17,28 @@ export default ({ content }) => {
   return (
     <Container>
       <Row>
-        <Col xs='12' sm='4'
-          dangerouslySetInnerHTML={{
+        <Col xs='12' sm='4'>
+          <div style={contentStyle} dangerouslySetInnerHTML={{
             __html: md.render(content)
-          }}
-        />
-        <Col xs='12' sm='4'
-          dangerouslySetInnerHTML={{
+          }} />
+        </Col>
+        <Col xs='12' sm='4'>
+          <div style={contentStyle} dangerouslySetInnerHTML={{
             __html: md.render(replace(content, places))
-          }}
-        />
-        <Col xs='12' sm='4'
-          dangerouslySetInnerHTML={{
+          }} />
+        </Col>
+        <Col xs='12' sm='4'>
+          <div style={contentStyle} dangerouslySetInnerHTML={{
             __html: md.render(replace(content, places, true))
-          }}
-        />
+          }} />
+        </Col>
       </Row>
     </Container>
   )
+}
+
+const contentStyle = {
+  padding: '2px',
+  border: '1px solid',
+  borderRadius: '5px'
 }
