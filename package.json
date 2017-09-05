@@ -3,23 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^2.13.0",
     "bootstrap": "^4.0.0-beta",
     "lodash": "^4.17.4",
     "markdown-it": "^8.4.0",
     "react": "^15.6.1",
-    "react-addons-css-transition-group": "^15.6.0",
-    "react-addons-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.13",
-    "reactstrap": "^4.8.0"
+    "react-scripts": "1.0.13"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "standard && react-scripts test --env=jsdom",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "standard && react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.4.0",
+    "react-app-rewired": "^1.2.5",
     "standard": "^10.0.3"
   },
   "standard": {

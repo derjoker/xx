@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, Modal } from 'antd'
 
 import X from './X'
 
@@ -38,20 +38,20 @@ class Item extends Component {
   render () {
     return (
       <div>
-        <div>
-          <Button color='primary' onClick={this.toggle}>Text</Button>
-          {' '}
-          <Button color='primary' onClick={this.onClick}> XX </Button>
+        <div style={divStyle}>
+          <Button.Group>
+            <Button size='large' onClick={this.toggle}>Text</Button>
+            <Button size='large' onClick={this.onClick}>XX</Button>
+          </Button.Group>
         </div>
         <div>
-          <Modal isOpen={this.state.modal} toggle={this.toggle}>
-            <ModalBody>
-              <textarea style={textareaStyle} ref={textarea => { this.textarea = textarea }} defaultValue={this.state.x} />
-            </ModalBody>
-            <ModalFooter>
-              <Button color='primary' onClick={this.onClickSave}>Save</Button>
-              <Button color='secondary' onClick={this.toggle}>Cancel</Button>
-            </ModalFooter>
+          <Modal
+            title='Text'
+            visible={this.state.modal}
+            onOk={this.onClickSave}
+            onCancel={this.toggle}
+          >
+            <textarea style={textareaStyle} ref={textarea => { this.textarea = textarea }} defaultValue={this.state.x} />
           </Modal>
         </div>
         <div style={{margin: '10px'}}>
@@ -64,7 +64,12 @@ class Item extends Component {
 
 export default Item
 
+const divStyle = {
+  textAlign: 'center'
+}
+
 const textareaStyle = {
   width: '100%',
-  height: '300px'
+  height: '300px',
+  fontSize: '16px'
 }

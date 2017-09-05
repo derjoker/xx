@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
+import { Row, Col } from 'antd'
 import markdownIt from 'markdown-it'
 
 import { randomPlaces, replace } from '../util'
@@ -15,25 +15,25 @@ export default ({ content }) => {
   const counts = matches ? matches.length : 0
   const places = randomPlaces(counts)
   return (
-    <Container>
-      <Row>
-        <Col xs='12' sm='4'>
+    <div>
+      <Row gutter={10}>
+        <Col xs={24} sm={8}>
           <div style={contentStyle} dangerouslySetInnerHTML={{
             __html: md.render(content)
           }} />
         </Col>
-        <Col xs='12' sm='4'>
+        <Col xs={24} sm={8}>
           <div style={contentStyle} dangerouslySetInnerHTML={{
             __html: md.render(replace(content, places))
           }} />
         </Col>
-        <Col xs='12' sm='4'>
+        <Col xs={24} sm={8}>
           <div style={contentStyle} dangerouslySetInnerHTML={{
             __html: md.render(replace(content, places, true))
           }} />
         </Col>
       </Row>
-    </Container>
+    </div>
   )
 }
 
