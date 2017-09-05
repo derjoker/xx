@@ -2,9 +2,11 @@
   "name": "xx",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://derjoker.github.io/xx",
   "dependencies": {
     "antd": "^2.13.0",
     "bootstrap": "^4.0.0-beta",
+    "gh-pages": "^1.0.0",
     "lodash": "^4.17.4",
     "markdown-it": "^8.4.0",
     "react": "^15.6.1",
@@ -12,6 +14,8 @@
     "react-scripts": "1.0.13"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "standard && react-app-rewired test --env=jsdom",
