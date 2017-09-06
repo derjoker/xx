@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Modal, Row, Col } from 'antd'
+import { Affix, Button, Modal, Row, Col } from 'antd'
 
 import CarouselX from './CarouselX'
 import X from './X'
@@ -39,12 +39,14 @@ class Item extends Component {
   render () {
     return (
       <div>
-        <div style={divStyle}>
-          <Button.Group>
-            <Button size='large' onClick={this.toggle}>Text</Button>
-            <Button size='large' onClick={this.onClick}>XX</Button>
-          </Button.Group>
-        </div>
+        <Affix>
+          <div style={divStyle}>
+            <Button.Group>
+              <Button size='large' onClick={this.toggle}>Text</Button>
+              <Button size='large' onClick={this.onClick}>XX</Button>
+            </Button.Group>
+          </div>
+        </Affix>
         <div>
           <Modal
             title='Text'
@@ -67,7 +69,8 @@ class Item extends Component {
 export default Item
 
 const divStyle = {
-  textAlign: 'center'
+  textAlign: 'center',
+  backgroundColor: 'white'
 }
 
 const textareaStyle = {
