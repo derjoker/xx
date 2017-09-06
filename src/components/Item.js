@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Modal } from 'antd'
+import { Button, Modal, Row, Col } from 'antd'
 
+import CarouselX from './CarouselX'
 import X from './X'
 
 class Item extends Component {
@@ -55,7 +56,8 @@ class Item extends Component {
           </Modal>
         </div>
         <div style={{margin: '10px'}}>
-          <X content={this.state.x} />
+          <Row><Col xs={24} sm={0}><CarouselX content={this.state.x} /></Col></Row>
+          <Row><Col xs={0} sm={24}><X content={this.state.x} /></Col></Row>
         </div>
       </div>
     )
