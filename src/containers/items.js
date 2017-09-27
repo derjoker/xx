@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Items from './items.component';
+import Items from '../components/items';
 
-import { KEY_SET, ITEMS_LOAD } from './actions';
+import { KEY_SET, ITEMS_LOAD } from '../actions';
 
 const items = [
   {

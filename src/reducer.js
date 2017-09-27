@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
 
-import Navigator from './navigator.component';
+import { Navigator } from './navigator';
+
 import {
   KEY_SET,
   ITEMS_LOAD,
