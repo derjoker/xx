@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
+import Items from './items.container';
+import Item from './item.container';
+import Edit from './edit.container';
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'xx',
@@ -11,27 +15,17 @@ class HomeScreen extends React.Component {
     const { navigation } = this.props;
     return (
       <View>
-        <Text
-          onPress={() => {
-            navigation.navigate('Text', { title: 'Text' });
-          }}
-        >
-          Home
-        </Text>
+        <Items onPress={() => navigation.navigate('Text')} />
       </View>
     );
   }
 }
 
 class TextScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Text',
-  };
-
   render() {
     return (
       <View>
-        <Text>Text</Text>
+        <Item />
       </View>
     );
   }
@@ -41,7 +35,7 @@ TextScreen.navigationOptions = props => {
   const { state, setParams } = props.navigation;
   const { params } = state;
   return {
-    title: params.title,
+    title: 'params.title',
     headerRight: (
       <Button
         title="Edit"
@@ -59,7 +53,7 @@ class EditScreen extends React.Component {
     const { navigation } = this.props;
     return (
       <View>
-        <Text>Edit</Text>
+        <Edit />
         <Button
           title="Delete"
           onPress={() => {
