@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
+import { reducer as form } from 'redux-form';
 
 import { Navigator } from './navigator';
 
@@ -46,6 +47,7 @@ export function items(state = [], action) {
 
 export default combineReducers({
   nav,
+  form,
   key,
   items,
 });
