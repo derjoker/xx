@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Button } from 'react-native';
 
 import Edit from '../containers/edit';
+import Done from '../containers/done';
 
 export default class EditScreen extends React.Component {
   render() {
@@ -21,27 +22,11 @@ export default class EditScreen extends React.Component {
 }
 
 EditScreen.navigationOptions = props => {
-  const { state } = props.navigation;
-  const { params } = state;
+  const { navigation } = props;
+  const { params } = navigation.state;
   return {
     title: 'Edit',
-    headerLeft: (
-      <Button
-        title="Cancel"
-        onPress={() => {
-          const { goBack } = props.navigation;
-          goBack();
-        }}
-      />
-    ),
-    headerRight: (
-      <Button
-        title="Done"
-        onPress={() => {
-          const { goBack } = props.navigation;
-          goBack();
-        }}
-      />
-    ),
+    headerLeft: <Button title="Cancel" onPress={() => navigation.goBack()} />,
+    headerRight: <Done navigation={navigation} />,
   };
 };

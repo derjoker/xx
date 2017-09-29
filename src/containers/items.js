@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 
 import Items from '../components/items';
 
@@ -35,4 +36,6 @@ const mapDispatchToProps = dispatch => ({
     }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Items);
+export default withNavigation(
+  connect(mapStateToProps, mapDispatchToProps)(Items)
+);

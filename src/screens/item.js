@@ -17,7 +17,7 @@ ItemScreen.navigationOptions = props => {
   const { state, setParams } = props.navigation;
   const { params } = state;
   return {
-    title: 'params.title',
+    title: params.item.title,
     headerRight: (
       <Button
         title="Edit"

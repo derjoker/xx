@@ -12,7 +12,7 @@ export default class HomeScreen extends React.Component {
     const { navigation } = this.props;
     return (
       <View>
-        <Items onPress={() => navigation.navigate('Item')} />
+        <Items />
       </View>
     );
   }

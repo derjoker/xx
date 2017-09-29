@@ -9,7 +9,7 @@ class Items extends React.Component {
   }
 
   render() {
-    const { items = [], set, onPress } = this.props;
+    const { items = [], set, navigation } = this.props;
     return (
       <View>
         {items.map((item, index) => (
@@ -17,7 +17,7 @@ class Items extends React.Component {
             key={index}
             onPress={() => {
               set(index);
-              onPress();
+              navigation.navigate('Item', { item });
             }}
           >
             {item.text}
@@ -31,7 +31,7 @@ class Items extends React.Component {
 Items.propTypes = {
   items: PropTypes.array,
   load: PropTypes.func,
-  onPress: PropTypes.func,
+  navigation: PropTypes.object,
 };
 
 export default Items;
