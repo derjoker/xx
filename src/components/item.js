@@ -30,9 +30,11 @@ function html(text) {
   `;
 }
 
-function replace(text) {
+function replace(text, percent = 0.5) {
   return text.replace(/[a-zäöüß]+\b/gi, match => {
-    return Math.random() > 0.6 ? match : `<span class="word">${match}</span>`;
+    return Math.random() > percent
+      ? match
+      : `<span class="word">${match}</span>`;
   });
 }
 
@@ -60,7 +62,13 @@ export default class Item extends React.Component {
             <WebView source={{ html: html(item.text) }} />
           </View>
           <View style={[this.state.size]}>
+            <WebView source={{ html: html(replace(item.text, 0.2)) }} />
+          </View>
+          <View style={[this.state.size]}>
             <WebView source={{ html: html(replace(item.text)) }} />
+          </View>
+          <View style={[this.state.size]}>
+            <WebView source={{ html: html(replace(item.text, 0.8)) }} />
           </View>
         </Carousel>
       </View>
