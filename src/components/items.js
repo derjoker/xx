@@ -12,11 +12,11 @@ class Items extends React.Component {
     const { items = [], set, navigation } = this.props;
     return (
       <View>
-        {items.map((item, index) => (
+        {items.map(item => (
           <Text
-            key={index}
+            key={item.key}
             onPress={() => {
-              set(index);
+              set(item.key);
               navigation.navigate('Item', { item });
             }}
           >

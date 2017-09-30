@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withNavigation } from 'react-navigation';
+import uuid from 'uuid/v1';
 
 import Items from '../components/items';
 
@@ -20,14 +21,17 @@ const items = [
 ];
 
 const mapStateToProps = state => ({
-  items: state.items,
+  items: state.items.valueSeq().toJS(),
 });
 
 const mapDispatchToProps = dispatch => ({
   load: () =>
     dispatch({
       type: ITEMS_LOAD,
-      items,
+      items: items.map(item => {
+        item.key = uuid();
+        return [item.key, item];
+      }),
     }),
   set: key =>
     dispatch({

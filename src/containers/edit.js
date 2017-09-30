@@ -7,13 +7,13 @@ import { ITEMS_UPDATE } from '../actions';
 
 export default connect(
   state => ({
-    initialValues: state.items[state.key],
+    initialValues: state.items.get(state.key),
   }),
   dispatch => ({
     onSubmit: values =>
       dispatch({
         type: ITEMS_UPDATE,
-        key: 1, // TODO
+        key: values.key,
         item: values,
       }),
   })

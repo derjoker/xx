@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
 import { reducer as form } from 'redux-form';
+import { Map } from 'immutable';
 
 import { Navigator } from './navigator';
 
@@ -25,21 +26,15 @@ export function key(state = 0, action) {
   }
 }
 
-export function items(state = [], action) {
-  let items;
+export function items(state = Map(), action) {
   switch (action.type) {
     case ITEMS_LOAD:
-      return action.items;
+      return Map(action.items);
     case ITEMS_PUSH:
-      return [...state, action.item];
     case ITEMS_UPDATE:
-      items = [...state];
-      items[action.key] = action.item;
-      return items;
+      return state.set(action.item.key, action.item);
     case ITEMS_DELETE:
-      items = [...state];
-      delete items[action.key];
-      return items;
+      return state.delete(action.key);
     default:
       return state;
   }

@@ -1,3 +1,5 @@
+import { Map } from 'immutable';
+
 import { key, items } from './reducer';
 import {
   KEY_SET,
@@ -24,44 +26,79 @@ describe('reducer/key', () => {
 
 describe('reducer/items', () => {
   it('init', () => {
-    expect(items([], {})).toEqual([]);
-    expect(items(['item'], {})).toEqual(['item']);
+    expect(items(undefined, {})).toEqual(Map());
+    expect(
+      items(
+        Map({
+          key: 'value',
+        }),
+        {}
+      ).toJS()
+    ).toEqual({
+      key: 'value',
+    });
   });
 
   it('load', () => {
     expect(
-      items([], {
+      items(undefined, {
         type: ITEMS_LOAD,
-        items: ['item'],
-      })
-    ).toEqual(['item']);
+        items: [['1', 'item1'], ['2', 'item2']],
+      }).toJS()
+    ).toEqual({
+      '1': 'item1',
+      '2': 'item2',
+    });
   });
 
   it('push', () => {
     expect(
-      items([], {
+      items(Map(), {
         type: ITEMS_PUSH,
-        item: 'item',
-      })
-    ).toEqual(['item']);
+        item: {
+          key: 'key',
+          value: 'value',
+        },
+      }).toJS()
+    ).toEqual({
+      key: {
+        key: 'key',
+        value: 'value',
+      },
+    });
   });
 
   it('update', () => {
     expect(
-      items([], {
-        type: ITEMS_UPDATE,
-        key: 2,
-        item: 'item',
-      })
-    ).toEqual([undefined, undefined, 'item']);
+      items(
+        Map({
+          key: {
+            key: 'key',
+            value: 'value',
+          },
+        }),
+        {
+          type: ITEMS_UPDATE,
+          item: {
+            key: 'key',
+            value: 'item',
+          },
+        }
+      ).get('key')
+    ).toEqual({
+      key: 'key',
+      value: 'item',
+    });
   });
 
   it('delete', () => {
     expect(
-      items(['item0', 'item1', 'item2'], {
+      items(Map([['key1', 'value1'], ['key2', 'value2']]), {
         type: ITEMS_DELETE,
-        key: 1,
-      })
-    ).toEqual(['item0', undefined, 'item2']);
+        key: 'key1',
+      }).toJS()
+    ).toEqual({
+      key2: 'value2',
+    });
   });
 });
