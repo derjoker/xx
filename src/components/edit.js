@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Text, View, TextInput, StyleSheet } from 'react-native';
 import { Field } from 'redux-form';
 
@@ -53,9 +52,5 @@ class Edit extends React.Component {
     );
   }
 }
-
-Edit.propTypes = {
-  item: PropTypes.object,
-};
 
 export default Edit;
