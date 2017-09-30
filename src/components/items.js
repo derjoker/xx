@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View, FlatList } from 'react-native';
+import { Text, Button, View, FlatList } from 'react-native';
 import { Card } from 'react-native-elements';
 
 class Items extends React.Component {
@@ -13,6 +13,13 @@ class Items extends React.Component {
     const { items = [], set, navigation } = this.props;
     return (
       <View>
+        <Button
+          title="Add"
+          onPress={() => {
+            set('%%UNDEFINED_KEY_ADD%%');
+            navigation.navigate('Edit');
+          }}
+        />
         <FlatList
           data={items}
           renderItem={info => (
@@ -36,6 +43,7 @@ class Items extends React.Component {
 Items.propTypes = {
   items: PropTypes.array,
   load: PropTypes.func,
+  set: PropTypes.func,
   navigation: PropTypes.object,
 };
 
