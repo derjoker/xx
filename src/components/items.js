@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
+import { Card } from 'react-native-elements';
 
 class Items extends React.Component {
   componentWillMount() {
@@ -12,17 +13,21 @@ class Items extends React.Component {
     const { items = [], set, navigation } = this.props;
     return (
       <View>
-        {items.map(item => (
-          <Text
-            key={item.key}
-            onPress={() => {
-              set(item.key);
-              navigation.navigate('Item', { item });
-            }}
-          >
-            {item.text}
-          </Text>
-        ))}
+        <FlatList
+          data={items}
+          renderItem={info => (
+            <Card title={info.item.title}>
+              <Text
+                onPress={() => {
+                  set(info.item.key);
+                  navigation.navigate('Item', { item: info.item });
+                }}
+              >
+                {info.item.text}
+              </Text>
+            </Card>
+          )}
+        />
       </View>
     );
   }
