@@ -29,6 +29,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-form": "^7.0.4",
+    "showdown": "^1.7.6",
     "uuid": "^3.1.0"
   }
 }

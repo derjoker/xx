@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, WebView, Dimensions } from 'react-native';
 import Carousel from 'react-native-looped-carousel';
+import showdown from 'showdown';
+
+const converter = new showdown.Converter();
 
 function html(text) {
   return `
@@ -59,16 +62,26 @@ export default class Item extends React.Component {
       <View onLayout={this._onLayoutDidChange}>
         <Carousel style={this.state.size} autoplay={false} pageInfo>
           <View style={[this.state.size]}>
-            <WebView source={{ html: html(item.text) }} />
+            <WebView source={{ html: html(converter.makeHtml(item.text)) }} />
           </View>
           <View style={[this.state.size]}>
-            <WebView source={{ html: html(replace(item.text, 0.2)) }} />
+            <WebView
+              source={{
+                html: html(converter.makeHtml(replace(item.text, 0.2))),
+              }}
+            />
           </View>
           <View style={[this.state.size]}>
-            <WebView source={{ html: html(replace(item.text)) }} />
+            <WebView
+              source={{ html: html(converter.makeHtml(replace(item.text))) }}
+            />
           </View>
           <View style={[this.state.size]}>
-            <WebView source={{ html: html(replace(item.text, 0.8)) }} />
+            <WebView
+              source={{
+                html: html(converter.makeHtml(replace(item.text, 0.8))),
+              }}
+            />
           </View>
         </Carousel>
       </View>
