@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, View, WebView, Dimensions } from 'react-native';
+import { Header } from 'react-navigation';
 import Carousel from 'react-native-looped-carousel';
 import showdown from 'showdown';
 
@@ -61,28 +62,22 @@ export default class Item extends React.Component {
     return (
       <View onLayout={this._onLayoutDidChange}>
         <Carousel style={this.state.size} autoplay={false} pageInfo>
-          <View style={[this.state.size]}>
-            <WebView source={{ html: html(converter.makeHtml(item.text)) }} />
-          </View>
-          <View style={[this.state.size]}>
-            <WebView
-              source={{
-                html: html(converter.makeHtml(replace(item.text, 0.2))),
-              }}
-            />
-          </View>
-          <View style={[this.state.size]}>
-            <WebView
-              source={{ html: html(converter.makeHtml(replace(item.text))) }}
-            />
-          </View>
-          <View style={[this.state.size]}>
-            <WebView
-              source={{
-                html: html(converter.makeHtml(replace(item.text, 0.8))),
-              }}
-            />
-          </View>
+          {[
+            html(converter.makeHtml(item.text)),
+            html(converter.makeHtml(replace(item.text, 0.2))),
+            html(converter.makeHtml(replace(item.text))),
+            html(converter.makeHtml(replace(item.text, 0.8))),
+          ].map((html, index) => (
+            <View
+              key={index}
+              style={[
+                this.state.size,
+                { height: this.state.size.height - Header.HEIGHT },
+              ]}
+            >
+              <WebView source={{ html }} />
+            </View>
+          ))}
         </Carousel>
       </View>
     );
