@@ -30,7 +30,7 @@ class Items extends React.Component {
                   navigation.navigate('Item', { item: info.item });
                 }}
               >
-                {info.item.text}
+                {info.item.text.slice(0, 300)}
               </Text>
             </Card>
           )}
