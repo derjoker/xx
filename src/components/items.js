@@ -13,13 +13,6 @@ class Items extends React.Component {
     const { items = [], set, navigation } = this.props;
     return (
       <View>
-        <Button
-          title="Add"
-          onPress={() => {
-            set('%%UNDEFINED_KEY_ADD%%');
-            navigation.navigate('Edit');
-          }}
-        />
         <FlatList
           data={items}
           renderItem={info => (

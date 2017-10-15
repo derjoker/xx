@@ -2,12 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 
 import Items from '../containers/items';
+import Add from '../containers/add';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'xx',
-  };
-
   render() {
     const { navigation } = this.props;
     return (
@@ -17,3 +14,11 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+HomeScreen.navigationOptions = props => {
+  const { navigation } = props;
+  return {
+    title: 'xx',
+    headerRight: <Add navigation={navigation} />,
+  };
+};
